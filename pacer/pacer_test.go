@@ -27,12 +27,12 @@ func TestPacedWorkers(t *testing.T) {
 	start := time.Now()
 
 	pacedTask := pacer.Pace(func() {
-		//fmt.Println("Task")
+		// fmt.Println("Task")
 		tasksDone.Done()
 	})
 
 	slowPacedTask := slowPacer.Pace(func() {
-		//fmt.Println("SlowTask")
+		// fmt.Println("SlowTask")
 		tasksDone.Done()
 	})
 

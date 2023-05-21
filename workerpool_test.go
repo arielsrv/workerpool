@@ -369,7 +369,7 @@ func TestStopRace(t *testing.T) {
 }
 
 // Run this test with race detector to test that using WaitingQueueSize has no
-// race condition
+// race condition.
 func TestWaitingQueueSizeRace(t *testing.T) {
 	defer goleak.VerifyNone(t)
 	const (
@@ -659,10 +659,10 @@ func BenchmarkEnqueue2(b *testing.B) {
 
 	b.ResetTimer()
 
-	// Start workers, and have them all wait on a channel before completing.
+	// Start workers and have them all wait on a channel before completing.
 	for i := 0; i < b.N; i++ {
 		releaseChan := make(chan struct{})
-		for i := 0; i < 64; i++ {
+		for j := 0; j < 64; j++ {
 			wp.Submit(func() { <-releaseChan })
 		}
 		close(releaseChan)
@@ -705,7 +705,7 @@ func benchmarkExecWorkers(n int, b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		for j := 0; j < n; j++ {
 			wp.Submit(func() {
-				//time.Sleep(100 * time.Microsecond)
+				// time.Sleep(100 * time.Microsecond)
 				allDone.Done()
 			})
 		}

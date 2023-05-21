@@ -71,7 +71,7 @@ func (p *WorkerPool) Stop() {
 	p.stop(false)
 }
 
-// StopWait stops the worker pool and waits for all queued tasks tasks to
+// StopWait stops the worker pool and waits for all queued tasks to
 // complete. No additional tasks may be submitted, but all pending tasks are
 // executed by workers before this function returns.
 func (p *WorkerPool) StopWait() {
@@ -261,7 +261,7 @@ func (p *WorkerPool) stop(wait bool) {
 	<-p.stoppedChan
 }
 
-// processWaitingQueue puts new tasks onto the the waiting queue, and removes
+// processWaitingQueue puts new tasks onto the waiting queue, and removes
 // tasks from the waiting queue as workers become available. Returns false if
 // worker pool is stopped.
 func (p *WorkerPool) processWaitingQueue() bool {
